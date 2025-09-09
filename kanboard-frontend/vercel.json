@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/auth/login.js": {
+      "memory": 128
+    },
+    "api/auth/register.js": {
+      "memory": 128
+    },
+    "api/boards.js": {
+      "memory": 128
+    },
+    "api/boards/[id].js": {
+      "memory": 128
+    },
+    "api/boards/[id]/columns.js": {
+      "memory": 128
+    },
+    "api/columns/[id]/tasks.js": {
+      "memory": 128
+    },
+    "api/tasks/[id].js": {
+      "memory": 128
+    },
+    "api/tasks/[id]/move.js": {
+      "memory": 128
+    }
+  },
+  "env": {
+    "REACT_APP_API_URL": "/api"
+  }
+}

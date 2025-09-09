@@ -13,6 +13,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "@vercel/node": "^3.0.0",
     "axios": "^1.11.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.543.0",
@@ -39,7 +40,8 @@
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "docker:build": "docker build -t kanboard-frontend .",
-    "docker:run": "docker run -p 3000:80 kanboard-frontend"
+    "docker:run": "docker run -p 3000:80 kanboard-frontend",
+    "vercel-build": "react-scripts build"
   },
   "devDependencies": {
     "tailwindcss": "^3.2.0",

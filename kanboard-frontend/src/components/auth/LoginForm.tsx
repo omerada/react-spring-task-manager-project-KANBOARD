@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { LoginRequest } from "../../types/auth";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
+import { getDemoCredentials } from "../../mocks/initialize";
 
 export const LoginForm: React.FC = () => {
   const { login, isLoading } = useAuth();
@@ -12,10 +13,13 @@ export const LoginForm: React.FC = () => {
   const location = useLocation();
 
   const from = (location as any).state?.from?.pathname || "/dashboard";
+  const isDemoMode = process.env.REACT_APP_MOCK_API === "true";
+  const demoCredentials = getDemoCredentials();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<LoginRequest>();
 
@@ -26,6 +30,11 @@ export const LoginForm: React.FC = () => {
     } catch (error) {
       // handled in context
     }
+  };
+
+  const fillDemoCredentials = () => {
+    setValue("username", demoCredentials.username);
+    setValue("password", demoCredentials.password);
   };
 
   return (
@@ -45,6 +54,31 @@ export const LoginForm: React.FC = () => {
             </Link>
           </p>
         </div>
+
+        {isDemoMode && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-medium text-blue-800">Demo Modu</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  Hızlı test için demo giriş bilgilerini kullanın
+                </p>
+              </div>
+              <Button
+                type="button"
+                onClick={fillDemoCredentials}
+                variant="secondary"
+                size="sm"
+              >
+                Demo Giriş
+              </Button>
+            </div>
+            <div className="mt-3 text-xs text-blue-600">
+              <p>👤 demo / demo123</p>
+              <p>👤 admin / admin123</p>
+            </div>
+          </div>
+        )}
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4">
