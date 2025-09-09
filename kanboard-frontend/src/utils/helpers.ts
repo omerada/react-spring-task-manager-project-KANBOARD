@@ -10,7 +10,10 @@ export function cn(...inputs: ClassValue[]) {
 /**
  * Format date to locale string
  */
-export function formatDate(date: string | Date, locale: string = "tr-TR"): string {
+export function formatDate(
+  date: string | Date,
+  locale: string = "tr-TR"
+): string {
   const dateObj = typeof date === "string" ? new Date(date) : date;
   return dateObj.toLocaleDateString(locale, {
     year: "numeric",
@@ -112,19 +115,25 @@ export function isValidEmail(email: string): boolean {
  */
 export function getColumnColorClass(title: string): string {
   const normalizedTitle = title.toUpperCase();
-  
+
   if (normalizedTitle.includes("TODO") || normalizedTitle.includes("TO DO")) {
     return "bg-gray-100 border-gray-300";
-  } else if (normalizedTitle.includes("PROGRESS") || normalizedTitle.includes("DOING")) {
+  } else if (
+    normalizedTitle.includes("PROGRESS") ||
+    normalizedTitle.includes("DOING")
+  ) {
     return "bg-yellow-50 border-yellow-300";
-  } else if (normalizedTitle.includes("DONE") || normalizedTitle.includes("COMPLETE")) {
+  } else if (
+    normalizedTitle.includes("DONE") ||
+    normalizedTitle.includes("COMPLETE")
+  ) {
     return "bg-green-50 border-green-300";
   } else if (normalizedTitle.includes("REVIEW")) {
     return "bg-purple-50 border-purple-300";
   } else if (normalizedTitle.includes("TEST")) {
     return "bg-orange-50 border-orange-300";
   }
-  
+
   return "bg-blue-50 border-blue-300";
 }
 
@@ -153,7 +162,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
-    
+
     try {
       document.execCommand("copy");
       document.body.removeChild(textArea);
@@ -173,12 +182,12 @@ export function createUrlWithParams(
   params: Record<string, string | number | boolean>
 ): string {
   const url = new URL(baseUrl, window.location.origin);
-  
+
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
       url.searchParams.append(key, String(value));
     }
   });
-  
+
   return url.toString();
 }

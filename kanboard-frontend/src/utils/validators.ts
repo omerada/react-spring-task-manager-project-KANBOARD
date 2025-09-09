@@ -67,7 +67,8 @@ export const strongPasswordValidation = {
   ...passwordValidation,
   pattern: {
     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-    message: "Şifre en az bir büyük harf, bir küçük harf ve bir rakam içermelidir",
+    message:
+      "Şifre en az bir büyük harf, bir küçük harf ve bir rakam içermelidir",
   },
 };
 
@@ -86,7 +87,8 @@ export const boardNameValidation = {
   },
   pattern: {
     value: /^[a-zA-Z0-9\s\-_]+$/,
-    message: "Board adı sadece harf, rakam, boşluk, tire ve alt çizgi içerebilir",
+    message:
+      "Board adı sadece harf, rakam, boşluk, tire ve alt çizgi içerebilir",
   },
 };
 
@@ -133,7 +135,10 @@ export const columnTitleValidation = {
 /**
  * Validate field against rules
  */
-export function validateField(value: any, rules: ValidationRule): ValidationResult {
+export function validateField(
+  value: any,
+  rules: ValidationRule
+): ValidationResult {
   // Check required
   if (rules.required && (!value || value.toString().trim() === "")) {
     return { isValid: false, message: "Bu alan gereklidir" };
@@ -231,13 +236,16 @@ export const validators = {
   },
 
   isUsername: (username: string): boolean => {
-    return /^[a-zA-Z0-9_]+$/.test(username) && username.length >= 3 && username.length <= 20;
+    return (
+      /^[a-zA-Z0-9_]+$/.test(username) &&
+      username.length >= 3 &&
+      username.length <= 20
+    );
   },
 
   isStrongPassword: (password: string): boolean => {
     return (
-      password.length >= 6 &&
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)
+      password.length >= 6 && /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)
     );
   },
 

@@ -22,9 +22,7 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );
@@ -46,7 +44,9 @@ describe("LoginForm", () => {
     expect(screen.getByText("Hesabınıza giriş yapın")).toBeInTheDocument();
     expect(screen.getByLabelText(/kullanıcı adı/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/şifre/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /giriş yap/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /giriş yap/i })
+    ).toBeInTheDocument();
   });
 
   it("shows validation errors for empty fields", async () => {
@@ -62,7 +62,7 @@ describe("LoginForm", () => {
     await waitFor(() => {
       expect(screen.getByText("Kullanıcı adı gereklidir")).toBeInTheDocument();
     });
-    
+
     expect(screen.getByText("Şifre gereklidir")).toBeInTheDocument();
   });
 

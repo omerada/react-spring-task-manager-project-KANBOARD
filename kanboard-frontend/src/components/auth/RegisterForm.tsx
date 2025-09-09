@@ -93,7 +93,8 @@ export const RegisterForm: React.FC = () => {
                 },
                 pattern: {
                   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                  message: "Şifre en az bir büyük harf, bir küçük harf ve bir rakam içermelidir",
+                  message:
+                    "Şifre en az bir büyük harf, bir küçük harf ve bir rakam içermelidir",
                 },
               })}
               error={errors.password?.message}

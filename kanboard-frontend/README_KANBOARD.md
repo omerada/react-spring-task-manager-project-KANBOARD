@@ -30,7 +30,7 @@ Modern ve responsive Kanban board uygulaması. React, TypeScript, Tailwind CSS v
 
 ## 📋 Gereksinimler
 
-- Node.js 18+ 
+- Node.js 18+
 - npm veya yarn
 - Backend API (Port 8080)
 

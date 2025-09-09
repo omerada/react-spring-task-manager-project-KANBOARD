@@ -39,8 +39,13 @@ export const useTasks = (boardId?: string) => {
   });
 
   const moveTaskMutation = useMutation({
-    mutationFn: ({ taskId, moveData }: { taskId: string; moveData: TaskMoveRequest }) =>
-      taskService.moveTask(taskId, moveData),
+    mutationFn: ({
+      taskId,
+      moveData,
+    }: {
+      taskId: string;
+      moveData: TaskMoveRequest;
+    }) => taskService.moveTask(taskId, moveData),
     onSuccess: () => {
       if (boardId) {
         queryClient.invalidateQueries({ queryKey: ["board", boardId] });

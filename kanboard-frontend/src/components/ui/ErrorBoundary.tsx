@@ -66,7 +66,8 @@ export class ErrorBoundary extends Component<Props, State> {
                   </h3>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Beklenmeyen bir hata oluştu. Lütfen sayfayı yenileyin veya ana sayfaya dönün.
+                      Beklenmeyen bir hata oluştu. Lütfen sayfayı yenileyin veya
+                      ana sayfaya dönün.
                     </p>
                   </div>
                 </div>

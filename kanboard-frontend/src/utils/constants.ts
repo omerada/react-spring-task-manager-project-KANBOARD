@@ -20,13 +20,13 @@ export const QUERY_KEYS = {
 export const COLUMN_COLORS = {
   "TO DO": "bg-gray-100 border-gray-300",
   "IN PROGRESS": "bg-yellow-50 border-yellow-300",
-  "DONE": "bg-green-50 border-green-300",
+  DONE: "bg-green-50 border-green-300",
   DEFAULT: "bg-blue-50 border-blue-300",
 } as const;
 
 export const COLUMN_TITLES = {
   TODO: "To Do",
-  IN_PROGRESS: "In Progress", 
+  IN_PROGRESS: "In Progress",
   DONE: "Done",
 } as const;
 

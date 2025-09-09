@@ -33,7 +33,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   useEffect(() => {
     const updateTheme = () => {
       const root = window.document.documentElement;
-      
+
       if (theme === "dark") {
         root.classList.add("dark");
         setIsDark(true);
@@ -42,7 +42,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         setIsDark(false);
       } else {
         // system theme
-        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
         if (systemDark) {
           root.classList.add("dark");
           setIsDark(true);
@@ -59,7 +61,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     if (theme === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       const handleChange = () => updateTheme();
-      
+
       mediaQuery.addEventListener("change", handleChange);
       return () => mediaQuery.removeEventListener("change", handleChange);
     }
@@ -77,8 +79,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };

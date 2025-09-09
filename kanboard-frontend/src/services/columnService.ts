@@ -20,9 +20,12 @@ export const columnService = {
     boardId: string,
     columnOrders: { id: string; position: number }[]
   ): Promise<Column[]> {
-    const response = await api.put<Column[]>(`/boards/${boardId}/columns/reorder`, {
-      columnOrders,
-    });
+    const response = await api.put<Column[]>(
+      `/boards/${boardId}/columns/reorder`,
+      {
+        columnOrders,
+      }
+    );
     return response.data;
   },
 };
