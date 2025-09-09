@@ -18,7 +18,8 @@ export const AnalyticsPage: React.FC = () => {
     keywords:
       "analytics, istatistik, performans, rapor, verimlilik, proje analizi, takım performansı",
     ogTitle: "Kanboard Analytics - Proje Performans Analizi",
-    ogDescription: "Proje ve takım performansınızı detaylı raporlarla analiz edin.",
+    ogDescription:
+      "Proje ve takım performansınızı detaylı raporlarla analiz edin.",
   });
 
   // Mock data for analytics
@@ -143,7 +144,11 @@ export const AnalyticsPage: React.FC = () => {
                       <div
                         className="bg-green-500 h-2 rounded-full transition-all duration-300"
                         style={{
-                          width: `${(day.completed / Math.max(day.created, day.completed)) * 100}%`,
+                          width: `${
+                            (day.completed /
+                              Math.max(day.created, day.completed)) *
+                            100
+                          }%`,
                         }}
                       ></div>
                     </div>
@@ -172,7 +177,9 @@ export const AnalyticsPage: React.FC = () => {
               <div className="flex items-center justify-between p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <span className="font-medium text-yellow-900">Devam Ediyor</span>
+                  <span className="font-medium text-yellow-900">
+                    Devam Ediyor
+                  </span>
                 </div>
                 <span className="text-yellow-700 font-semibold">29%</span>
               </div>
