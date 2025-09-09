@@ -42,16 +42,14 @@ export const useBoards = () => {
     boards: boardsQuery.data || [],
     isLoading: boardsQuery.isLoading,
     error: boardsQuery.error,
-    createBoard: (createBoardMutation as any).mutate,
-    deleteBoard: (deleteBoardMutation as any).mutate,
-    isCreating: (createBoardMutation as any).isLoading ?? false,
-    isDeleting: (deleteBoardMutation as any).isLoading ?? false,
+    createBoard: createBoardMutation.mutate,
+    deleteBoard: deleteBoardMutation.mutate,
+    isCreating: createBoardMutation.isPending,
+    isDeleting: deleteBoardMutation.isPending,
   };
 };
 
 export const useBoardDetail = (boardId: string) => {
-  const queryClient = useQueryClient();
-
   const boardQuery = useQuery({
     queryKey: ["board", boardId],
     queryFn: () => boardService.getBoardById(boardId),

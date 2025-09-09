@@ -31,7 +31,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:production": "npm run build && npm run analyze",
+    "analyze": "npx webpack-bundle-analyzer build/static/js/*.js",
+    "preview": "npx serve -s build",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "docker:build": "docker build -t kanboard-frontend .",
+    "docker:run": "docker run -p 3000:80 kanboard-frontend"
   },
   "devDependencies": {
     "tailwindcss": "^3.2.0",
