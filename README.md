@@ -1,10 +1,10 @@
 # 📋 PROJECT OVERVIEW - Task Manager KANBOARD
 
-## 🎯 Proje Hakkında
+## 🎯 About the Project
 
-**Task Manager KANBOARD**, modern bir Kanban board uygulaması olup, kullanıcıların projelerini etkili bir şekilde yönetmelerini sağlar. Drag & drop özelliği, JWT authentication ve responsive design ile kullanıcı dostu bir deneyim sunar.
+**Task Manager KANBOARD** is a modern Kanban board application that enables users to manage their projects effectively. It provides a user-friendly experience with drag & drop functionality, JWT authentication, and responsive design.
 
-## 🏗️ Teknoloji Stack'i
+## 🏗️ Technology Stack
 
 ### Backend
 
@@ -34,7 +34,7 @@ BoardColumns (id, title, position, board_id, created_at, updated_at)
 Tasks (id, title, description, position, column_id, created_at, updated_at)
 ```
 
-## 📊 Proje Özellikleri
+## 📊 Project Features
 
 ### 🔐 Authentication & Authorization
 
@@ -169,7 +169,7 @@ DELETE /api/tasks/{id}                - Delete task
 
 ## 📚 Implementation Guides
 
-Bu repository'de yer alan detaylı implementation guide'ları:
+This repository contains detailed implementation guides:
 
 1. **[Backend Development Guide](./01-BACKEND-DEVELOPMENT-GUIDE.md)**
 
@@ -242,7 +242,7 @@ Bu repository'de yer alan detaylı implementation guide'ları:
 
 ## 🎉 Success Metrics
 
-Bu projeyi tamamladığınızda sahip olacağınız yetenekler:
+Upon completing this project, you will have acquired the following skills:
 
 - ✅ Modern full-stack web development
 - ✅ RESTful API design and implementation
@@ -257,8 +257,8 @@ Bu projeyi tamamladığınızda sahip olacağınız yetenekler:
 
 ## 📞 Support & Resources
 
-Her iki guide da detaylı implementation talimatları içerir ve AI agent'lar tarafından kolayca uygulanabilir şekilde hazırlanmıştır. Herhangi bir konuda detay gerektiğinde, ilgili guide'a başvurun.
+Both guides contain detailed implementation instructions and are prepared to be easily applied by AI agents. Refer to the relevant guide when detailed information is needed.
 
 ---
 
-**Not**: Bu projede modern web development best practice'leri kullanılmış olup, production-ready bir uygulama geliştirmek için gereken tüm adımlar kapsamlı şekilde dokumentlanmıştır.
+**Note**: This project uses modern web development best practices, and all steps required to develop a production-ready application are comprehensively documented.
