@@ -2,7 +2,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#4F46E5" />
 
@@ -26,7 +26,7 @@
     />
     <meta property="og:url" content="https://kanboard-demo.vercel.app" />
     <meta property="og:site_name" content="Kanboard" />
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta property="og:image" content="/logo512.png" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -35,32 +35,55 @@
       name="twitter:description"
       content="Kanboard ile projelerinizi organize edin, görevlerinizi takip edin ve takım çalışmanızı geliştirin."
     />
-    <meta name="twitter:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta name="twitter:image" content="/logo512.png" />
 
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
 
     <!-- PWA Manifest -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <title>Kanboard - Modern Proje Yönetimi</title>
+
+    <script>
+      // SPA 404 redirect for client-side routing
+      window.location.href = "/";
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <noscript>
+      <h1>Kanboard</h1>
+      <p>
+        Bu sayfa JavaScript gerektirir. Lütfen tarayıcınızda JavaScript'i
+        etkinleştirin.
+      </p>
+      <p><a href="/">Ana sayfaya dön</a></p>
+    </noscript>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          font-family: system-ui, -apple-system, sans-serif;
+        "
+      >
+        <div style="text-align: center">
+          <h1 style="color: #4f46e5; margin-bottom: 16px">
+            Kanboard'a yönlendiriliyor...
+          </h1>
+          <p style="color: #6b7280">
+            Eğer otomatik yönlendirme çalışmazsa,
+            <a href="/" style="color: #4f46e5">buraya tıklayın</a>.
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

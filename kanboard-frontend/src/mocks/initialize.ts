@@ -1,5 +1,8 @@
 export const initializeMockData = () => {
-  const isDemoMode = process.env.REACT_APP_MOCK_API === "true";
+  const isDemoMode =
+    process.env.REACT_APP_MOCK_API === "true" ||
+    process.env.NODE_ENV === "production" ||
+    window.location.hostname.includes("vercel.app");
 
   if (!isDemoMode) return;
 
@@ -24,12 +27,13 @@ export const initializeMockData = () => {
       "%c📝 Demo Credentials:",
       "background: #059669; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold;"
     );
-    console.log("Username: demo");
-    console.log("Password: demo123");
+    console.log("Username: demo | Password: demo123");
+    console.log("Username: admin | Password: admin123");
     console.log("---");
-    console.log("Username: admin");
-    console.log("Password: admin123");
+    console.log("Demo bilgileri otomatik olarak form alanlarına doldurulacak.");
   }
+
+  return isDemoMode;
 };
 
 export const getDemoCredentials = () => {
@@ -37,4 +41,12 @@ export const getDemoCredentials = () => {
   return stored
     ? JSON.parse(stored)
     : { username: "demo", password: "demo123" };
+};
+
+export const isDemoEnvironment = () => {
+  return (
+    process.env.REACT_APP_MOCK_API === "true" ||
+    process.env.NODE_ENV === "production" ||
+    window.location.hostname.includes("vercel.app")
+  );
 };

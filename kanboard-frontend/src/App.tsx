@@ -13,6 +13,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { BoardDetailPage } from "./pages/BoardDetailPage";
+import { useSEO } from "./hooks/useSEO";
 import "./styles/globals.css";
 
 const queryClient = new QueryClient({
@@ -25,6 +26,19 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  // Global SEO settings
+  useSEO({
+    title: "Kanboard - Modern Proje Yönetimi ve Takım Çalışması",
+    description:
+      "Kanboard ile projelerinizi organize edin, görevlerinizi takip edin ve takım çalışmanızı geliştirin. Modern kanban board uygulaması.",
+    keywords:
+      "kanban, proje yönetimi, görev takibi, takım çalışması, üretkenlik, agile, scrum",
+    ogTitle: "Kanboard - Modern Proje Yönetimi",
+    ogDescription:
+      "Projelerinizi organize edin, görevlerinizi takip edin ve takım çalışmanızı geliştirin.",
+    ogUrl: window.location.origin,
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>

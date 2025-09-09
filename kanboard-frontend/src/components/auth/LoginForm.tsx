@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { LoginRequest } from "../../types/auth";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
-import { getDemoCredentials } from "../../mocks/initialize";
+import { getDemoCredentials, isDemoEnvironment } from "../../mocks/initialize";
 
 export const LoginForm: React.FC = () => {
   const { login, isLoading } = useAuth();
@@ -13,7 +13,7 @@ export const LoginForm: React.FC = () => {
   const location = useLocation();
 
   const from = (location as any).state?.from?.pathname || "/dashboard";
-  const isDemoMode = process.env.REACT_APP_MOCK_API === "true";
+  const isDemoMode = isDemoEnvironment();
   const demoCredentials = getDemoCredentials();
 
   const {
@@ -21,7 +21,17 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<LoginRequest>();
+  } = useForm<LoginRequest>({
+    defaultValues: isDemoMode ? demoCredentials : {},
+  });
+
+  // Otomatik demo bilgileri doldurma
+  useEffect(() => {
+    if (isDemoMode) {
+      setValue("username", demoCredentials.username);
+      setValue("password", demoCredentials.password);
+    }
+  }, [isDemoMode, demoCredentials, setValue]);
 
   const onSubmit = async (data: LoginRequest) => {
     try {
@@ -42,9 +52,12 @@ export const LoginForm: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Hesabınıza giriş yapın
+            Kanboard'a Hoş Geldiniz
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
+            Hesabınıza giriş yapın
+          </p>
+          <p className="mt-1 text-center text-sm text-gray-600">
             Hesabınız yok mu?{" "}
             <Link
               to="/register"
@@ -59,9 +72,12 @@ export const LoginForm: React.FC = () => {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-blue-800">Demo Modu</h3>
+                <h3 className="text-sm font-medium text-blue-800">
+                  🚀 Demo Modu Aktif
+                </h3>
                 <p className="text-sm text-blue-700 mt-1">
-                  Hızlı test için demo giriş bilgilerini kullanın
+                  Demo bilgileri otomatik olarak dolduruldu. Hemen giriş
+                  yapabilirsiniz!
                 </p>
               </div>
               <Button
@@ -70,11 +86,14 @@ export const LoginForm: React.FC = () => {
                 variant="secondary"
                 size="sm"
               >
-                Demo Giriş
+                Yenile
               </Button>
             </div>
-            <div className="mt-3 text-xs text-blue-600">
-              <p>👤 demo / demo123</p>
+            <div className="mt-3 text-xs text-blue-600 bg-blue-100 p-2 rounded">
+              <p>
+                <strong>Demo Hesaplar:</strong>
+              </p>
+              <p>👤 demo / demo123 (önerilen)</p>
               <p>👤 admin / admin123</p>
             </div>
           </div>
@@ -93,6 +112,7 @@ export const LoginForm: React.FC = () => {
                 },
               })}
               error={errors.username?.message}
+              placeholder={isDemoMode ? "demo" : "Kullanıcı adınızı girin"}
             />
 
             <Input
@@ -106,6 +126,7 @@ export const LoginForm: React.FC = () => {
                 },
               })}
               error={errors.password?.message}
+              placeholder={isDemoMode ? "demo123" : "Şifrenizi girin"}
             />
           </div>
 
@@ -115,8 +136,14 @@ export const LoginForm: React.FC = () => {
             isLoading={isLoading}
             disabled={isLoading}
           >
-            Giriş Yap
+            {isLoading ? "Giriş yapılıyor..." : "Giriş Yap"}
           </Button>
+
+          {isDemoMode && (
+            <p className="text-center text-xs text-gray-500 mt-4">
+              Bu bir demo uygulamasıdır. Gerçek kullanıcı verileri saklanmaz.
+            </p>
+          )}
         </form>
       </div>
     </div>

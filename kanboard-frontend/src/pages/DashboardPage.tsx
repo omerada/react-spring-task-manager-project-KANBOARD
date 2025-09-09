@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { useBoards } from "../hooks/useBoards";
+import { useSEO } from "../hooks/useSEO";
 import { Layout } from "../components/layout/Layout";
 import { BoardCard } from "../components/board/BoardCard";
 import { CreateBoardModal } from "../components/board/CreateBoardModal";
@@ -10,6 +11,16 @@ import { Loading } from "../components/ui/Loading";
 export const DashboardPage: React.FC = () => {
   const { boards, isLoading, deleteBoard } = useBoards();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+  useSEO({
+    title: "Dashboard - Kanboard",
+    description:
+      "Kanboard dashboard'unda tüm projelerinizi görüntüleyin ve yönetin. Yeni board'lar oluşturun, mevcut projelerinizi düzenleyin.",
+    keywords:
+      "dashboard, proje dashboard, kanban board, proje yönetimi, board listesi",
+    ogTitle: "Kanboard Dashboard - Projelerinizi Yönetin",
+    ogDescription: "Tüm projelerinizi tek yerden yönetin ve takip edin.",
+  });
 
   if (isLoading) {
     return (
