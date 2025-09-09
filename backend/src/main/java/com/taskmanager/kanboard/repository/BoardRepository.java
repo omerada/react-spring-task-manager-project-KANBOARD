@@ -26,6 +26,9 @@ public interface BoardRepository extends JpaRepository<Board, UUID> {
     Optional<Board> findByIdAndUserUsernameWithColumnsAndTasks(@Param("boardId") UUID boardId,
             @Param("username") String username);
 
+    @Query("SELECT b FROM Board b LEFT JOIN FETCH b.columns c LEFT JOIN FETCH c.tasks WHERE b.id = :boardId")
+    Optional<Board> findByIdWithColumns(@Param("boardId") UUID boardId);
+
     boolean existsByIdAndUser(UUID id, User user);
 
     boolean existsByIdAndUserUsername(UUID id, String username);

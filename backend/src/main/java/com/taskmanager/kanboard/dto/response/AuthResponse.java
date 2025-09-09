@@ -17,6 +17,13 @@ public class AuthResponse {
         this.email = email;
     }
 
+    public AuthResponse(String token, String type, String username, String email) {
+        this.token = token;
+        this.type = type;
+        this.username = username;
+        this.email = email;
+    }
+
     // Getters and Setters
     public String getToken() {
         return token;

@@ -39,6 +39,10 @@ public class JwtTokenProvider {
         return createToken(claims, username);
     }
 
+    public String generateTokenFromUsername(String username) {
+        return generateToken(username);
+    }
+
     private String createToken(Map<String, Object> claims, String subject) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
