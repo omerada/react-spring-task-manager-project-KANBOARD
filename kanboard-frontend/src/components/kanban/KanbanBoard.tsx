@@ -10,7 +10,9 @@ interface KanbanBoardProps {
 }
 
 export const KanbanBoard: React.FC<KanbanBoardProps> = ({ board }) => {
-  const { handleDragStart, handleDragEnd, handleDrop } = useDragAndDrop(board.id);
+  const { handleDragStart, handleDragEnd, handleDrop } = useDragAndDrop(
+    board.id
+  );
 
   return (
     <DndProvider backend={HTML5Backend}>

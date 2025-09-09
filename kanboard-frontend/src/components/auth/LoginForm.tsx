@@ -37,7 +37,10 @@ export const LoginForm: React.FC = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Hesabınız yok mu?{" "}
-            <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
+            <Link
+              to="/register"
+              className="font-medium text-blue-600 hover:text-blue-500"
+            >
               Kayıt olun
             </Link>
           </p>
@@ -50,7 +53,10 @@ export const LoginForm: React.FC = () => {
               type="text"
               {...register("username", {
                 required: "Kullanıcı adı gereklidir",
-                minLength: { value: 3, message: "Kullanıcı adı en az 3 karakter olmalıdır" },
+                minLength: {
+                  value: 3,
+                  message: "Kullanıcı adı en az 3 karakter olmalıdır",
+                },
               })}
               error={errors.username?.message}
             />
@@ -60,13 +66,21 @@ export const LoginForm: React.FC = () => {
               type="password"
               {...register("password", {
                 required: "Şifre gereklidir",
-                minLength: { value: 6, message: "Şifre en az 6 karakter olmalıdır" },
+                minLength: {
+                  value: 6,
+                  message: "Şifre en az 6 karakter olmalıdır",
+                },
               })}
               error={errors.password?.message}
             />
           </div>
 
-          <Button type="submit" className="w-full" isLoading={isLoading} disabled={isLoading}>
+          <Button
+            type="submit"
+            className="w-full"
+            isLoading={isLoading}
+            disabled={isLoading}
+          >
             Giriş Yap
           </Button>
         </form>

@@ -9,7 +9,13 @@ export const useDragAndDrop = (boardId: string) => {
   const [draggedTask, setDraggedTask] = useState<Task | null>(null);
 
   const moveTaskMutation = useMutation({
-    mutationFn: ({ taskId, moveData }: { taskId: string; moveData: TaskMoveRequest }) => taskService.moveTask(taskId, moveData),
+    mutationFn: ({
+      taskId,
+      moveData,
+    }: {
+      taskId: string;
+      moveData: TaskMoveRequest;
+    }) => taskService.moveTask(taskId, moveData),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["board", boardId] });
     },
@@ -35,7 +41,7 @@ export const useDragAndDrop = (boardId: string) => {
       position,
     };
 
-  (moveTaskMutation as any).mutate({ taskId: draggedTask.id, moveData });
+    (moveTaskMutation as any).mutate({ taskId: draggedTask.id, moveData });
   };
 
   return {
@@ -43,6 +49,6 @@ export const useDragAndDrop = (boardId: string) => {
     handleDragStart,
     handleDragEnd,
     handleDrop,
-  isMoving: (moveTaskMutation as any).isLoading,
+    isMoving: (moveTaskMutation as any).isLoading,
   };
 };

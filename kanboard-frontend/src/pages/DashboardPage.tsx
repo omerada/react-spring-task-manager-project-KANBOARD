@@ -38,20 +38,33 @@ export const DashboardPage: React.FC = () => {
             <div className="w-24 h-24 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <PlusIcon className="h-12 w-12 text-gray-400" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Henüz board'unuz yok</h3>
-            <p className="text-gray-600 mb-6">İlk board'unuzu oluşturarak başlayın</p>
-            <Button onClick={() => setIsCreateModalOpen(true)}>İlk Board'u Oluştur</Button>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
+              Henüz board'unuz yok
+            </h3>
+            <p className="text-gray-600 mb-6">
+              İlk board'unuzu oluşturarak başlayın
+            </p>
+            <Button onClick={() => setIsCreateModalOpen(true)}>
+              İlk Board'u Oluştur
+            </Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {boards.map((board: any) => (
-              <BoardCard key={board.id} board={board} onDelete={() => deleteBoard(board.id)} />
+              <BoardCard
+                key={board.id}
+                board={board}
+                onDelete={() => deleteBoard(board.id)}
+              />
             ))}
           </div>
         )}
       </div>
 
-      <CreateBoardModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
+      <CreateBoardModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
     </Layout>
   );
 };

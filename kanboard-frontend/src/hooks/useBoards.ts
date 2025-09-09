@@ -20,7 +20,9 @@ export const useBoards = () => {
       toast.success("Board başarıyla oluşturuldu!");
     },
     onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Board oluşturulurken hata oluştu");
+      toast.error(
+        error.response?.data?.message || "Board oluşturulurken hata oluştu"
+      );
     },
   });
 
@@ -31,7 +33,9 @@ export const useBoards = () => {
       toast.success("Board başarıyla silindi!");
     },
     onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Board silinirken hata oluştu");
+      toast.error(
+        error.response?.data?.message || "Board silinirken hata oluştu"
+      );
     },
   });
 
@@ -39,17 +43,22 @@ export const useBoards = () => {
     boards: boardsQuery.data || [],
     isLoading: boardsQuery.isLoading,
     error: boardsQuery.error,
-  createBoard: createBoardMutation.mutate,
-  deleteBoard: deleteBoardMutation.mutate,
-  isCreating: (createBoardMutation as any).isLoading ?? false,
-  isDeleting: (deleteBoardMutation as any).isLoading ?? false,
+    createBoard: createBoardMutation.mutate,
+    deleteBoard: deleteBoardMutation.mutate,
+    isCreating: (createBoardMutation as any).isLoading ?? false,
+    isDeleting: (deleteBoardMutation as any).isLoading ?? false,
   };
 };
 
 export const useBoardDetail = (boardId: string) => {
   const queryClient = useQueryClient();
 
-  const boardQuery = useQuery({ queryKey: ["board", boardId], queryFn: () => boardService.getBoardById(boardId), enabled: !!boardId, staleTime: 2 * 60 * 1000 });
+  const boardQuery = useQuery({
+    queryKey: ["board", boardId],
+    queryFn: () => boardService.getBoardById(boardId),
+    enabled: !!boardId,
+    staleTime: 2 * 60 * 1000,
+  });
 
   return {
     board: boardQuery.data,

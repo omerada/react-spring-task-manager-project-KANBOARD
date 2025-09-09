@@ -10,7 +10,9 @@ export const Header: React.FC = () => {
       <div className="text-xl font-bold">Kanboard</div>
       <div className="flex items-center space-x-4">
         {user && <div className="text-sm">{user.username}</div>}
-        <Button variant="ghost" onClick={logout}>Çıkış</Button>
+        <Button variant="ghost" onClick={logout}>
+          Çıkış
+        </Button>
       </div>
     </header>
   );

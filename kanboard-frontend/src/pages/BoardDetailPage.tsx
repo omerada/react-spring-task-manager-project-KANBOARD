@@ -25,8 +25,12 @@ export const BoardDetailPage: React.FC = () => {
     return (
       <Layout>
         <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Board bulunamadı</h2>
-          <p className="text-gray-600">Bu board mevcut değil veya erişim izniniz yok.</p>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            Board bulunamadı
+          </h2>
+          <p className="text-gray-600">
+            Bu board mevcut değil veya erişim izniniz yok.
+          </p>
         </div>
       </Layout>
     );
@@ -37,7 +41,9 @@ export const BoardDetailPage: React.FC = () => {
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">{board.name}</h1>
-          <p className="text-gray-600">Oluşturulma: {new Date(board.createdAt).toLocaleDateString("tr-TR")}</p>
+          <p className="text-gray-600">
+            Oluşturulma: {new Date(board.createdAt).toLocaleDateString("tr-TR")}
+          </p>
         </div>
 
         <KanbanBoard board={board} />

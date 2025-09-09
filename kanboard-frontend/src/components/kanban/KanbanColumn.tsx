@@ -15,7 +15,13 @@ interface KanbanColumnProps {
   onDrop: (columnId: string, position: number) => void;
 }
 
-export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, boardId, onDragStart, onDragEnd, onDrop }) => {
+export const KanbanColumn: React.FC<KanbanColumnProps> = ({
+  column,
+  boardId,
+  onDragStart,
+  onDragEnd,
+  onDrop,
+}) => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -45,14 +51,26 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, boardId, onD
   };
 
   return (
-    <div ref={drop as any} className={`flex-shrink-0 w-80 bg-white rounded-lg border-2 ${isOver ? "border-blue-400 bg-blue-50" : getColumnColor(column.title)} transition-colors duration-200`}>
+    <div
+      ref={drop as any}
+      className={`flex-shrink-0 w-80 bg-white rounded-lg border-2 ${
+        isOver ? "border-blue-400 bg-blue-50" : getColumnColor(column.title)
+      } transition-colors duration-200`}
+    >
       <div className="p-4">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-gray-900 flex items-center">
             {column.title}
-            <span className="ml-2 bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">{column.tasks.length}</span>
+            <span className="ml-2 bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full">
+              {column.tasks.length}
+            </span>
           </h3>
-          <Button variant="ghost" size="sm" onClick={() => setIsCreateModalOpen(true)} className="p-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsCreateModalOpen(true)}
+            className="p-1"
+          >
             <PlusIcon className="h-4 w-4" />
           </Button>
         </div>
@@ -61,17 +79,31 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, boardId, onD
           {column.tasks
             .sort((a, b) => a.position - b.position)
             .map((task) => (
-              <TaskCard key={task.id} task={task} onDragStart={onDragStart} onDragEnd={onDragEnd} />
+              <TaskCard
+                key={task.id}
+                task={task}
+                onDragStart={onDragStart}
+                onDragEnd={onDragEnd}
+              />
             ))}
         </div>
 
-        <Button variant="ghost" className="w-full mt-3 border-2 border-dashed border-gray-300 hover:border-gray-400" onClick={() => setIsCreateModalOpen(true)}>
+        <Button
+          variant="ghost"
+          className="w-full mt-3 border-2 border-dashed border-gray-300 hover:border-gray-400"
+          onClick={() => setIsCreateModalOpen(true)}
+        >
           <PlusIcon className="h-4 w-4 mr-2" />
           Task Ekle
         </Button>
       </div>
 
-      <CreateTaskModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} columnId={column.id} boardId={boardId} />
+      <CreateTaskModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        columnId={column.id}
+        boardId={boardId}
+      />
     </div>
   );
 };
