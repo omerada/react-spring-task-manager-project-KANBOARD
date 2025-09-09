@@ -19,15 +19,20 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: "task",
-    item: { id: task.id },
-    begin: () => onDragStart(task),
-    end: () => onDragEnd(),
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: "task",
+      item: () => {
+        onDragStart(task);
+        return { id: task.id, task };
+      },
+      end: () => onDragEnd(),
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+      }),
     }),
-  }));
+    [task, onDragStart, onDragEnd]
+  );
 
   return (
     <>

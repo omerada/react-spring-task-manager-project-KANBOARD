@@ -24,18 +24,21 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
 }) => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: "task",
-    drop: (item: any, monitor) => {
-      if (!monitor.didDrop()) {
-        const newPosition = column.tasks.length;
-        onDrop(column.id, newPosition);
-      }
-    },
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+  const [{ isOver }, drop] = useDrop(
+    () => ({
+      accept: "task",
+      drop: (item: { id: string; task: Task }, monitor) => {
+        if (!monitor.didDrop()) {
+          const newPosition = column.tasks.length;
+          onDrop(column.id, newPosition);
+        }
+      },
+      collect: (monitor) => ({
+        isOver: !!monitor.isOver(),
+      }),
     }),
-  }));
+    [column.id, column.tasks.length, onDrop]
+  );
 
   const getColumnColor = (title: string) => {
     switch (title.toLowerCase()) {
