@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Board, BoardRequest } from "../types/board";
 import { boardService } from "../services/boardService";
@@ -13,8 +12,8 @@ export const useBoards = () => {
     staleTime: 5 * 60 * 1000,
   });
 
-  const createBoardMutation = useMutation({
-    mutationFn: (data: any) => boardService.createBoard(data),
+  const createBoardMutation = useMutation<Board, any, BoardRequest>({
+    mutationFn: (data: BoardRequest) => boardService.createBoard(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["boards"] });
       toast.success("Board başarıyla oluşturuldu!");
@@ -26,7 +25,7 @@ export const useBoards = () => {
     },
   });
 
-  const deleteBoardMutation = useMutation({
+  const deleteBoardMutation = useMutation<void, any, string>({
     mutationFn: (id: string) => boardService.deleteBoard(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["boards"] });
@@ -43,8 +42,8 @@ export const useBoards = () => {
     boards: boardsQuery.data || [],
     isLoading: boardsQuery.isLoading,
     error: boardsQuery.error,
-    createBoard: createBoardMutation.mutate,
-    deleteBoard: deleteBoardMutation.mutate,
+    createBoard: (createBoardMutation as any).mutate,
+    deleteBoard: (deleteBoardMutation as any).mutate,
     isCreating: (createBoardMutation as any).isLoading ?? false,
     isDeleting: (deleteBoardMutation as any).isLoading ?? false,
   };
