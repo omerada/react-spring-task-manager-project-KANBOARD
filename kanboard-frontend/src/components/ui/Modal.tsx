@@ -58,18 +58,18 @@ export const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-screen items-center justify-center p-4">
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"
           onClick={onClose}
         />
 
         <div
-          className={`relative bg-white rounded-lg shadow-xl w-full ${sizeClasses[size]}`}
+          className={`relative bg-white bg-opacity-95 backdrop-blur-md rounded-2xl shadow-2xl w-full ${sizeClasses[size]} border border-white border-opacity-30`}
         >
-          <div className="flex items-center justify-between p-6 border-b">
-            <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <div className="flex items-center justify-between p-6 border-b border-gray-100">
+            <h3 className="text-xl font-bold text-gray-900">{title}</h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-xl"
             >
               <XMarkIcon className="h-6 w-6" />
             </button>

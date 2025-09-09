@@ -18,14 +18,14 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 hover:scale-105 active:scale-95";
 
   const variantClasses: Record<string, string> = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+    primary: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 focus:ring-blue-500 shadow-md hover:shadow-lg",
     secondary:
-      "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500",
-    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
-    ghost: "bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-500",
+      "bg-white text-gray-900 hover:bg-gray-50 focus:ring-gray-500 border border-gray-200 shadow-sm hover:shadow-md",
+    danger: "bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 focus:ring-red-500 shadow-md hover:shadow-lg",
+    ghost: "bg-transparent text-gray-600 hover:bg-white hover:shadow-md focus:ring-gray-500 border border-transparent hover:border-gray-200",
   };
 
   const sizeClasses: Record<string, string> = {
