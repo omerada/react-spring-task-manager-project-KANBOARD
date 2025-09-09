@@ -8,6 +8,10 @@
       "config": {
         "distDir": "build"
       }
+    },
+    {
+      "src": "api/**/*.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -27,20 +31,6 @@
       "dest": "/index.html"
     }
   ],
-  "functions": {
-    "api/auth/login.js": {
-      "memory": 128
-    },
-    "api/auth/register.js": {
-      "memory": 128
-    },
-    "api/boards.js": {
-      "memory": 128
-    },
-    "api/boards/[id].js": {
-      "memory": 128
-    }
-  },
   "env": {
     "REACT_APP_API_URL": "/api",
     "REACT_APP_MOCK_API": "true",
