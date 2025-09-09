@@ -13,6 +13,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { BoardDetailPage } from "./pages/BoardDetailPage";
+import { AnalyticsPage } from "./pages/AnalyticsPage";
 import { useSEO } from "./hooks/useSEO";
 import "./styles/globals.css";
 
@@ -60,6 +61,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <BoardDetailPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/analytics"
+                element={
+                  <ProtectedRoute>
+                    <AnalyticsPage />
                   </ProtectedRoute>
                 }
               />
