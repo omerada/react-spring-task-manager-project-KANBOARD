@@ -1,196 +1,152 @@
-# 🎯 Kanboard Frontend - React Task Manager
+# 🎯 Kanboard Frontend — React Task Manager
 
-Modern ve responsive Kanban board uygulaması. React, TypeScript, Tailwind CSS ve React Query ile geliştirilmiştir. **Vercel deployment** için optimize edilmiş ve **mock backend** ile hazır demo modunu destekler.
+Modern, responsive Kanban board application built with React, TypeScript, Tailwind CSS, and React Query. The frontend is optimized for Vercel deployment and includes a mock backend for demo mode.
 
-## 🚀 Live Demo
+## Live demo
 
-**[🌐 Canlı Demo - Vercel](https://your-app-url.vercel.app)**
+Visit the live demo (replace with your URL):
 
-### Demo Giriş Bilgileri:
+[Live Demo - Vercel](https://your-app-url.vercel.app)
 
-- **Admin:** `admin` / `admin123`
-- **Demo:** `demo` / `demo123`
+Demo accounts:
 
-## ✨ Özellikler
+- Admin: `admin` / `admin123`
+- Demo: `demo` / `demo123`
 
-- ✅ **Modern React & TypeScript**: Tip güvenli geliştirme
-- ✅ **JWT Authentication**: Güvenli kullanıcı yönetimi
-- ✅ **Drag & Drop**: React DnD ile sürükle-bırak kanban board
-- ✅ **Responsive Design**: Tailwind CSS ile mobil uyumlu
-- ✅ **State Management**: React Query ile akıllı veri yönetimi
-- ✅ **Form Handling**: React Hook Form ile güçlü form yönetimi
-- ✅ **Mock Backend**: Backend olmadan test edilebilir demo modu
-- ✅ **Vercel Ready**: Tek tıkla deployment
-- ✅ **Error Handling**: Kapsamlı hata yönetimi
-- ✅ **Loading States**: Optimized kullanıcı deneyimi
-- ✅ **PWA Ready**: Progressive Web App desteği
-- ✅ **Docker Support**: Containerized deployment
+## Features
 
-## 🛠️ Teknolojiler
+- Modern React + TypeScript
+- JWT authentication (mocked in demo mode)
+- Drag & drop Kanban board (React DnD)
+- Responsive UI (Tailwind CSS)
+- Server-state management with React Query
+- Form handling with React Hook Form
+- Mock backend for offline/demo use
+- Vercel-ready configuration
+- PWA support and Docker options
 
-- **React 19** - UI Framework
-- **TypeScript** - Type Safety
-- **Tailwind CSS** - Styling
-- **React Query** - Server State Management
-- **React Router Dom** - Routing
-- **React Hook Form** - Form Management
-- **React DnD** - Drag and Drop
-- **Axios** - HTTP Client
-- **React Hot Toast** - Notifications
-- **Heroicons** - Icons
-- **Vercel** - Deployment Platform
+## Technologies
 
-## 🎯 Mock Backend Features
+- React
+- TypeScript
+- Tailwind CSS
+- React Query
+- React Router
+- React Hook Form
+- React DnD
+- Axios
+- React Hot Toast
+- Heroicons
+- Vercel
 
-- 🔐 **Authentication simulation** - JWT token simulation
-- 📋 **Board management** - CRUD operasyonları
-- 📝 **Task management** - Create, Update, Delete, Move
-- 🏗️ **Drag & Drop** - Gerçek zamanlı pozisyon güncelleme
-- ⏱️ **Network delay simulation** - Gerçekçi API deneyimi
-- 💾 **Persistent data** - localStorage ile data saklanması
+## Quick start
 
-## 🚀 Hızlı Başlangıç
+Recommended deployment: Vercel
 
-### Vercel Deploy (Önerilen)
+1. Fork or clone this repository
+2. Import the project into Vercel
+   - Framework: Create React App
+   - Root directory: `kanboard-frontend`
+   - Build command: `npm run vercel-build`
+3. Add environment variables (in Vercel dashboard):
 
-1. **GitHub'a fork/clone yapın**
-2. **Vercel'e import edin:**
-   - Framework: `Create React App`
-   - Root Directory: `kanboard-frontend`
-   - Build Command: `npm run vercel-build`
-3. **Environment Variables:**
-   ```
-   REACT_APP_API_URL=/api
-   REACT_APP_MOCK_API=true
-   REACT_APP_ENVIRONMENT=production
-   ```
-4. **Deploy!** 🎉
+```
+REACT_APP_API_URL=/api
+REACT_APP_MOCK_API=true
+REACT_APP_ENVIRONMENT=production
+```
 
-### Local Development
+Local development:
 
-```bash
+```powershell
 cd kanboard-frontend
 npm install
 npm start
 ```
 
-## 📋 Gereksinimler
+## Requirements
 
 - Node.js 18+
-- npm veya yarn
-- _(Optional)_ Backend API (Port 8080)
+- npm or yarn
+- (Optional) Backend API on port 8080 when not using mock mode
 
-## 🚀 Deployment
+## Deployment options
 
-### 🌟 Vercel (Önerilen)
+Vercel (recommended) — see `DEPLOYMENT.md` for full instructions.
 
-Detaylı deployment guide için: [DEPLOYMENT.md](DEPLOYMENT.md)
+Docker
 
-```bash
-# 1. GitHub'a push
-git add .
-git commit -m "Ready for Vercel deployment"
-git push origin main
-
-# 2. Vercel'de proje oluştur
-# 3. Environment variables ekle
-# 4. Deploy!
-```
-
-### 🐳 Docker
-
-```bash
+```powershell
 npm run docker:build
 npm run docker:run
 ```
 
-### 🔧 Manual Build
+Manual build
 
-```bash
+```powershell
 npm run build
-# build/ klasörünü web sunucunuza yükleyin
+# Upload the generated `build/` folder to your static host
 ```
 
-## 📁 Proje Yapısı
+## Project structure
 
 ```
 kanboard-frontend/
-├── api/                 # Vercel serverless functions
-│   ├── auth/           # Authentication endpoints
-│   └── boards/         # Board management endpoints
-├── src/
-│   ├── components/     # React bileşenleri
-│   │   ├── auth/      # Authentication bileşenleri
-│   │   ├── board/     # Board yönetimi
-│   │   ├── kanban/    # Kanban board
-│   │   ├── layout/    # Layout bileşenleri
-│   │   └── ui/        # Reusable UI bileşenleri
-│   ├── mocks/         # Mock backend implementation
-│   │   ├── data.ts    # Sample data
-│   │   ├── mockAuthService.ts
-│   │   ├── mockBoardService.ts
-│   │   └── mockTaskService.ts
-│   ├── services/      # API services (mock destekli)
-│   ├── types/         # TypeScript types
-│   └── utils/         # Yardımcı fonksiyonlar
-├── vercel.json        # Vercel configuration
-└── DEPLOYMENT.md      # Deployment guide
+├─ api/                 # Vercel serverless functions (mock API)
+├─ src/
+│  ├─ components/
+   │  ├─ mocks/
+   │  ├─ services/
+   │  ├─ types/
+   │  └─ utils/
+├─ vercel.json
+└─ DEPLOYMENT.md
 ```
 
-## 🎯 Kullanım
+## Usage
 
-### Demo Mode
+Demo mode (default): application runs without a real backend using mock services and localStorage persistence.
 
-Uygulama varsayılan olarak demo modunda çalışır:
+Production mode: set env vars to point to your real backend:
 
-- Backend gerekmez
-- Mock data ile çalışır
-- localStorage'da data saklanır
-- Gerçekçi API simülasyonu
-
-### Production Mode
-
-```bash
-# Environment variable değiştir
+```powershell
 REACT_APP_MOCK_API=false
 REACT_APP_API_URL=https://your-backend-api.com/api
 ```
 
-### Authentication
+Authentication
 
-1. **Demo giriş:** Login sayfasındaki "Demo Giriş" butonunu kullanın
-2. **Manuel giriş:** `demo/demo123` veya `admin/admin123`
-3. **Kayıt:** Yeni hesap oluşturun (demo modunda)
+Use the demo login button, or credentials `demo/demo123` or `admin/admin123`. Registration works in demo mode.
 
-### Board & Task Yönetimi
+Board & task management
 
-1. **Board Oluştur**: Dashboard'dan "Yeni Board"
-2. **Task Ekle**: Kolon içindeki "+" butonu
-3. **Drag & Drop**: Task'leri sürükleyip taşıyın
-4. **Düzenle/Sil**: Task kartlarındaki butonları kullanın
+1. Create a board from the dashboard
+2. Add tasks using the "+" button inside a column
+3. Drag & drop tasks between columns
+4. Edit or delete tasks via card controls
 
-## 🧪 Test
+## Tests
 
-```bash
-npm test                # Testleri çalıştır
-npm run test:coverage   # Test coverage
-npm run type-check      # TypeScript kontrolü
-npm run lint           # ESLint kontrolü
+```powershell
+npm test
+npm run test:coverage
+npm run type-check
+npm run lint
 ```
 
-## 🔧 Available Scripts
+## Available scripts
 
-- `npm start` - Development server
-- `npm run build` - Production build
-- `npm run vercel-build` - Vercel için build
-- `npm test` - Testleri çalıştır
-- `npm run preview` - Build preview
-- `npm run docker:build` - Docker image
-- `npm run docker:run` - Docker container
+- `npm start` — Development server
+- `npm run build` — Production build
+- `npm run vercel-build` — Build for Vercel
+- `npm test` — Run tests
+- `npm run preview` — Preview build
+- `npm run docker:build` — Build Docker image
+- `npm run docker:run` — Run Docker container
 
-## 🌍 Environment Variables
+## Environment variables
 
-```env
+```
 # Production (Vercel)
 REACT_APP_API_URL=/api
 REACT_APP_MOCK_API=true
@@ -201,41 +157,34 @@ REACT_APP_API_URL=http://localhost:8080/api
 REACT_APP_MOCK_API=true
 REACT_APP_ENVIRONMENT=development
 
-# Real Backend
+# Real backend
 REACT_APP_API_URL=https://your-api.com/api
 REACT_APP_MOCK_API=false
 ```
 
-## 🚨 Önemli Notlar
+## Notes
 
-- **Mock mode** varsayılan olarak aktif
-- **LocalStorage** kullanarak data persist edilir
-- **Real backend'e** geçiş için sadece env variable değiştirin
-- **Vercel serverless functions** mock API sağlar
-- **Responsive design** mobile-first yaklaşım
+- Mock mode is enabled by default for demo purposes.
+- Data is persisted in localStorage in demo mode.
+- To use a real backend set `REACT_APP_MOCK_API=false` and update `REACT_APP_API_URL`.
 
-## 🤝 Katkıda Bulunma
+## Contributing
 
-1. Fork yapın
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Commit yapın (`git commit -m 'Add amazing feature'`)
-4. Push yapın (`git push origin feature/amazing-feature`)
-5. Pull Request açın
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit changes (`git commit -m "Add feature"`)
+4. Push and open a Pull Request
 
-## 📄 Lisans
+## License
 
-Bu proje MIT lisansı altında lisanslanmıştır.
+MIT License
 
-## 📞 İletişim & Linkler
+## Links
 
-- **🌐 Live Demo:** [Vercel App URL]
-- **📝 Deployment Guide:** [DEPLOYMENT.md](DEPLOYMENT.md)
-- **🐛 Issues:** [GitHub Issues]
-- **📚 Documentation:** Bu README
+- Live Demo: https://your-app-url.vercel.app
+- Deployment Guide: `DEPLOYMENT.md`
+- Issues: GitHub Issues
 
-## 🙏 Teşekkürler
+## Thanks
 
-- [Vercel](https://vercel.com/) - Deployment platform
-- [React](https://reactjs.org/) - UI Framework
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [React Query](https://tanstack.com/query) - State management
+- Vercel, React, Tailwind CSS

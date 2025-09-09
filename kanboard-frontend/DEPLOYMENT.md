@@ -1,31 +1,49 @@
-# Kanboard - Vercel Deployment Guide
+# Kanboard — Vercel Deployment Guide
 
-Bu proje Vercel üzerinde deploy edilmek üzere yapılandırılmıştır ve mock backend ile birlikte gelir.
+This project is configured for deployment on Vercel and includes a mock backend implemented as Vercel serverless functions for demo and testing.
 
-## 🚀 Vercel'e Deploy Etme
+## 🚀 Deploying to Vercel
 
-### 1. GitHub'a Push
+### 1. Push to GitHub
 
-```bash
+```powershell
+# Ensure your changes are committed and pushed to the branch you want to deploy (typically `main`)
 git add .
 git commit -m "Add Vercel deployment configuration with mock backend"
 git push origin main
 ```
 
-### 2. Vercel'e Deploy
+This guide explains how to deploy the `kanboard-frontend` to Vercel. The frontend ships with a mock backend implemented as Vercel serverless functions for demo and testing.
 
-1. [Vercel](https://vercel.com) hesabınıza giriş yapın
-2. "New Project" butonuna tıklayın
-3. GitHub repository'nizi seçin
-4. Project settings:
-   - **Framework Preset**: Create React App
-   - **Root Directory**: `kanboard-frontend`
-   - **Build Command**: `npm run vercel-build`
-   - **Output Directory**: `build`
+## Prerequisites
 
-### 3. Environment Variables
+- A GitHub repository containing the project
+- A Vercel account linked to your GitHub
+- Node.js 18+ (for local development and builds)
 
-Vercel dashboard'da aşağıdaki environment variable'ları ekleyin:
+## 1. Push changes to GitHub
+
+Ensure your branch (typically `main`) has the latest changes:
+
+```powershell
+git add .
+git commit -m "Add Vercel deployment configuration with mock backend"
+git push origin main
+```
+
+## 2. Import the project into Vercel
+
+1. Sign in to Vercel and click "New Project".
+2. Select the GitHub repository.
+3. Configure the project settings:
+   - Framework Preset: Create React App
+   - Root Directory: `kanboard-frontend`
+   - Build Command: `npm run vercel-build`
+   - Output Directory: `build`
+
+## 3. Environment variables
+
+Add these variables in the Vercel project settings:
 
 ```
 REACT_APP_API_URL=/api
@@ -33,83 +51,182 @@ REACT_APP_MOCK_API=true
 REACT_APP_ENVIRONMENT=production
 ```
 
-## 🎯 Demo Credentials
+When deploying against a real backend, set:
 
-Uygulama demo modunda çalışıyor. Aşağıdaki giriş bilgilerini kullanabilirsiniz:
+```
+REACT_APP_MOCK_API=false
+REACT_APP_API_URL=https://your-backend-api.com/api
+```
 
-**Admin Kullanıcı:**
+## 4. Demo credentials (demo mode)
 
-- Kullanıcı Adı: `admin`
-- Şifre: `admin123`
+The app runs in demo mode by default. Example demo accounts:
 
-**Demo Kullanıcı:**
+- Admin: `admin` / `admin123`
+- Demo: `demo` / `demo123`
 
-- Kullanıcı Adı: `demo`
-- Şifre: `demo123`
+# Kanboard — Vercel Deployment Guide
 
-## 🔧 Mock API Features
+This guide explains how to deploy the `kanboard-frontend` to Vercel. The frontend includes a mock backend implemented as Vercel serverless functions for demo and testing.
 
-- ✅ Kimlik doğrulama (JWT token simulation)
-- ✅ Board yönetimi (CRUD operasyonları)
-- ✅ Task yönetimi (Create, Update, Delete, Move)
-- ✅ Drag & Drop özelliği
-- ✅ Gerçekçi network delay simulation
-- ✅ Persistent data (localStorage)
+## Prerequisites
 
-## 📁 Project Structure
+- A GitHub repository containing the project
+- A Vercel account linked to your GitHub
+- Node.js 18+ installed locally (for development and builds)
+
+## 1 — Push changes to GitHub
+
+Ensure your branch (typically `main`) contains the latest changes:
+
+```powershell
+git add .
+git commit -m "Add Vercel deployment configuration with mock backend"
+git push origin main
+```
+
+## 2 — Import the project into Vercel
+
+1. Sign in to Vercel and click "New Project".
+2. Select your GitHub repository.
+3. Configure project settings:
+   - Framework Preset: Create React App
+   - Root Directory: `kanboard-frontend`
+   - Build Command: `npm run vercel-build`
+   - Output Directory: `build`
+
+## 3 — Environment variables
+
+Add the following environment variables in the Vercel project settings:
+
+```text
+REACT_APP_API_URL=/api
+REACT_APP_MOCK_API=true
+REACT_APP_ENVIRONMENT=production
+```
+
+When deploying to a real backend, set:
+
+```text
+REACT_APP_MOCK_API=false
+REACT_APP_API_URL=https://your-backend-api.com/api
+```
+
+## 4 — Demo credentials (demo mode)
+
+The app runs in demo mode by default. Example demo accounts:
+
+- Admin: `admin` / `admin123`
+- Demo: `demo` / `demo123`
+
+## Mock API features (serverless functions)
+
+- Authentication simulation (JWT)
+- Board and task CRUD operations
+- Drag & drop support
+- Network delay simulation
+- Data persistence via localStorage (demo-only)
+
+## Project layout (frontend)
 
 ```
 kanboard-frontend/
-├── api/                    # Vercel serverless functions
-│   ├── auth/
-│   │   ├── login.ts
-│   │   └── register.ts
-│   └── boards/
-│       ├── index.ts
-│       └── [id].ts
-├── src/
-│   ├── mocks/             # Mock data and services
-│   │   ├── data.ts
-│   │   ├── utils.ts
-│   │   ├── initialize.ts
-│   │   ├── mockAuthService.ts
-│   │   ├── mockBoardService.ts
-│   │   └── mockTaskService.ts
-│   └── services/          # Updated API services with mock support
-└── vercel.json           # Vercel configuration
+├─ api/               # Vercel serverless functions (mock API)
+│  ├─ auth/
+│  └─ boards/
+├─ src/
+│  ├─ components/
+│  ├─ mocks/
+│  ├─ services/
+│  └─ utils/
+└─ vercel.json
 ```
 
-## 🎨 Features
+## 2 — Import the project into Vercel
 
-- 📱 Responsive design
-- 🎭 Dark/Light theme support
-- 🔐 Authentication system
-- 📋 Multiple boards support
-- 🏗️ Kanban board with drag & drop
-- ⚡ Real-time updates simulation
-- 🎯 TypeScript support
-- 🎨 Tailwind CSS styling
+1. Sign in to Vercel and click "New Project".
+2. Select the GitHub repository.
+3. Configure project settings:
+   - Framework Preset: Create React App
+   - Root Directory: `kanboard-frontend`
+   - Build Command: `npm run vercel-build`
+   - Output Directory: `build`
 
-## 🛠️ Development
+## 3 — Environment variables
 
-Local development için:
+Add the following environment variables in the Vercel project settings:
 
-```bash
+```text
+REACT_APP_API_URL=/api
+REACT_APP_MOCK_API=true
+REACT_APP_ENVIRONMENT=production
+```
+
+When deploying to a real backend, set:
+
+```text
+REACT_APP_MOCK_API=false
+REACT_APP_API_URL=https://your-backend-api.com/api
+```
+
+## 4 — Demo credentials (demo mode)
+
+The app runs in demo mode by default. Example demo accounts:
+
+- Admin: `admin` / `admin123`
+- Demo: `demo` / `demo123`
+
+## Mock API features (serverless functions)
+
+- Authentication simulation (JWT)
+- Board and task CRUD operations
+- Drag & drop support
+- Network delay simulation
+- Data persistence via localStorage (demo-only)
+
+## Project layout (frontend)
+
+```
+kanboard-frontend/
+├─ api/               # Vercel serverless functions (mock API)
+│  ├─ auth/
+│  └─ boards/
+├─ src/
+│  ├─ components/
+│  ├─ mocks/
+│  ├─ services/
+│  └─ utils/
+└─ vercel.json
+```
+
+## Local development
+
+```powershell
 cd kanboard-frontend
 npm install
 npm start
 ```
 
-Production build test için:
+To build and preview a production bundle locally:
 
-```bash
+```powershell
 npm run build
 npm run preview
 ```
 
-## 📝 Notes
+## Notes
 
-- Mock API Vercel serverless functions olarak çalışır
-- Tüm data localStorage'da saklanır (demo amaçlı)
-- Production'da gerçek backend API'sine kolayca geçilebilir
-- Environment variable `REACT_APP_MOCK_API=false` yaparak gerçek API kullanılabilir
+- The mock API is intended for demo and local testing and uses localStorage for persistence.
+- To use a real backend in production set `REACT_APP_MOCK_API=false` and update `REACT_APP_API_URL`.
+
+## Troubleshooting
+
+- Build fails: ensure Node.js 18+ and that you run commands from the `kanboard-frontend` directory.
+- Environment variables not applied: confirm they are configured for the correct Vercel environment (Preview vs Production).
+
+## Quick checklist before deploying
+
+- [ ] Push latest code to GitHub
+- [ ] Add required environment variables in Vercel
+- [ ] Confirm Root Directory = `kanboard-frontend`
+- [ ] Trigger a deploy and inspect the build logs in Vercel
