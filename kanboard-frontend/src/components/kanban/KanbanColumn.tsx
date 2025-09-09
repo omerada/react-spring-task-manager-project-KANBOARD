@@ -70,7 +70,9 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
     <div
       ref={drop as any}
       className={`flex-shrink-0 w-80 rounded-2xl border-2 transition-all duration-300 hover:shadow-lg ${
-        isOver ? "border-blue-400 bg-blue-50 shadow-xl" : getColumnColor(column.title)
+        isOver
+          ? "border-blue-400 bg-blue-50 shadow-xl"
+          : getColumnColor(column.title)
       }`}
     >
       <div className="p-6">

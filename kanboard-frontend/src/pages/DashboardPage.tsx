@@ -15,15 +15,15 @@ export const DashboardPage: React.FC = () => {
   // Keyboard shortcut for creating new board
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === 'n') {
+      if (event.ctrlKey && event.key === "n") {
         event.preventDefault();
         setIsCreateModalOpen(true);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
@@ -51,21 +51,29 @@ export const DashboardPage: React.FC = () => {
         <div className="glass-effect rounded-2xl p-4 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-4 sm:space-y-0">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold gradient-text mb-2">Board'larım</h1>
-              <p className="text-gray-600 text-base sm:text-lg">Tüm projelerinizi buradan yönetin ve takip edin</p>
+              <h1 className="text-2xl sm:text-3xl font-bold gradient-text mb-2">
+                Board'larım
+              </h1>
+              <p className="text-gray-600 text-base sm:text-lg">
+                Tüm projelerinizi buradan yönetin ve takip edin
+              </p>
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-gray-600">{boards.length} aktif proje</span>
+                  <span className="text-sm text-gray-600">
+                    {boards.length} aktif proje
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  <span className="text-sm text-gray-600">Son güncelleme: bugün</span>
+                  <span className="text-sm text-gray-600">
+                    Son güncelleme: bugün
+                  </span>
                 </div>
               </div>
             </div>
             <div className="flex flex-col items-center sm:items-end space-y-3">
-              <Button 
+              <Button
                 onClick={() => setIsCreateModalOpen(true)}
                 className="w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
               >
@@ -73,7 +81,9 @@ export const DashboardPage: React.FC = () => {
                 Yeni Board Oluştur
               </Button>
               <div className="text-sm text-gray-500 text-center sm:text-right">
-                <span className="hidden sm:inline">Ctrl + N ile hızlı oluştur</span>
+                <span className="hidden sm:inline">
+                  Ctrl + N ile hızlı oluştur
+                </span>
                 <span className="sm:hidden">Hızlı oluştur</span>
               </div>
             </div>
@@ -89,11 +99,11 @@ export const DashboardPage: React.FC = () => {
               Henüz board'unuz yok
             </h3>
             <p className="text-gray-600 mb-8 max-w-md mx-auto text-lg">
-              İlk board'unuzu oluşturarak proje yönetimi yolculuğunuza başlayın. 
+              İlk board'unuzu oluşturarak proje yönetimi yolculuğunuza başlayın.
               Kanban metodolojisi ile işlerinizi daha etkili organize edin.
             </p>
             <div className="space-y-4">
-              <Button 
+              <Button
                 onClick={() => setIsCreateModalOpen(true)}
                 className="text-lg px-8 py-3 shadow-xl hover:shadow-2xl"
               >
@@ -101,7 +111,10 @@ export const DashboardPage: React.FC = () => {
                 İlk Board'u Oluştur
               </Button>
               <div className="text-sm text-gray-500">
-                veya klavye kısayolu: <kbd className="px-2 py-1 bg-gray-200 rounded text-xs">Ctrl + N</kbd>
+                veya klavye kısayolu:{" "}
+                <kbd className="px-2 py-1 bg-gray-200 rounded text-xs">
+                  Ctrl + N
+                </kbd>
               </div>
             </div>
           </div>

@@ -52,13 +52,15 @@ export const TaskCard: React.FC<TaskCardProps> = ({
                 {task.description}
               </p>
             )}
-            
+
             <div className="flex items-center justify-between">
               <div className="text-xs text-gray-500 flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span>{new Date(task.createdAt).toLocaleDateString("tr-TR")}</span>
+                <span>
+                  {new Date(task.createdAt).toLocaleDateString("tr-TR")}
+                </span>
               </div>
-              
+
               <div className="flex items-center space-x-1">
                 <div className="w-6 h-6 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">
@@ -90,11 +92,14 @@ export const TaskCard: React.FC<TaskCardProps> = ({
             </button>
           </div>
         </div>
-        
+
         {/* Priority indicator */}
         <div className="mt-3 flex justify-end">
           <div className="w-full h-1 bg-gray-100 rounded-full">
-            <div className="h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" style={{ width: '60%' }}></div>
+            <div
+              className="h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"
+              style={{ width: "60%" }}
+            ></div>
           </div>
         </div>
       </div>

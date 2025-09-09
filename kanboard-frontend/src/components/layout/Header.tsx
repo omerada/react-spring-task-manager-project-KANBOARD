@@ -1,7 +1,10 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "../ui/Button";
-import { UserCircleIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+  UserCircleIcon,
+  ArrowRightOnRectangleIcon,
+} from "@heroicons/react/24/outline";
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -14,11 +17,15 @@ export const Header: React.FC = () => {
             <span className="text-white font-bold text-base sm:text-lg">K</span>
           </div>
           <div className="hidden sm:block">
-            <h1 className="text-xl sm:text-2xl font-bold gradient-text">Kanboard</h1>
-            <p className="text-xs sm:text-sm text-gray-500">Proje Yönetim Sistemi</p>
+            <h1 className="text-xl sm:text-2xl font-bold gradient-text">
+              Kanboard
+            </h1>
+            <p className="text-xs sm:text-sm text-gray-500">
+              Proje Yönetim Sistemi
+            </p>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-2 sm:space-x-4">
           {user && (
             <div className="hidden sm:flex items-center space-x-3 bg-white bg-opacity-50 rounded-full px-4 py-2">
@@ -29,8 +36,8 @@ export const Header: React.FC = () => {
               </div>
             </div>
           )}
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={logout}
             className="flex items-center space-x-2 hover:bg-red-50 hover:text-red-600 transition-colors px-2 sm:px-4"
           >
